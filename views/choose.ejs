@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EIT</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<style type="text/css">
+center{
+	margin: auto;
+}
+.row{
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px; 
+}
+button{
+	margin: 10px;
+}
+input{
+	margin: 10px;
+}
+</style>
+<body>
+	<% include ./partials/navbar %>
+	<center>
+		<input type="text" id="city" name="city" value="<%= city %>" disabled>
+		<u><h3>What's your Emergency?</h3></u>
+		<div class="row">
+			<div class="col-md-3">
+		  		<div class="thumbnail">
+		      		<img src="/bones.jpg" alt="Bones" style="width:100%">
+		  		</div>
+			</div>
+			<div class="col-md-3">
+		  		<div class="thumbnail">
+		      		<img src="/brain.jpg" alt="Brain" style="width:100%">
+		  		</div>
+			</div>
+			<div class="col-md-3">
+		  		<div class="thumbnail">
+		      		<img src="/heart.png" alt="Heart" style="width:100%">
+		  		</div>
+			</div>
+			<div class="col-md-3">
+		  		<div class="thumbnail">
+		      		<img src="/stomach.jpg" alt="Stomach" style="width:100%">
+		  		</div>
+			</div>
+		</div>
+	</center>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</html>

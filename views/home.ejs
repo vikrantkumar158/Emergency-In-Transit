@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EIT</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<style type="text/css">
+		center{
+			margin: auto;
+		}
+		.row{
+			width: 100%;
+		}
+		button{
+			margin: 10px;
+		}
+		input{
+			margin: 10px;
+		}
+		p{
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+	<% include ./partials/navbar %>
+	<center>
+		<button type="button" onclick="getLocation()">Get Location</button><br>
+		<form action="/choose" method="POST">
+			<input id="latitude" name="latitude" type="text" value="" placeholder="Latitude">
+			<input id="longitude" name="longitude" type="text" value="" placeholder="Longitude"><br>
+			<input id="city" name="city" type="text" value="" placeholder="City"><br>
+			<input id="myBtn" type="Submit">
+			<p id="demo"></p>
+		</form>
+	</center>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+latitude.disabled=true;
+longitude.disabled=true;
+city.disabled=true;
+myBtn.disabled=true;
+
+function getLocation() {
+  	if (navigator.geolocation) {
+  		navigator.geolocation.getCurrentPosition(showPosition);
+  	} else { 
+    	demo.innerHTML = "Geolocation is not supported by this browser.";
+  	}
+}
+
+function showPosition(position) {
+	latitude.value=position.coords.latitude;
+	longitude.value=position.coords.longitude;
+	city.value="Rajpura";
+	latitude.disabled=false;
+	longitude.disabled=false;
+	city.disabled=false;
+	myBtn.disabled=false;
+}
+</script>
+</html>

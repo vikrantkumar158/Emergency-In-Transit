@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EIT</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<style type="text/css">
+center{
+	margin: 10px auto;
+}
+button{
+	margin: 5px;
+	padding: 10px;
+}
+input{
+	margin: 5px;
+	padding: 10px;
+	border: 1px solid black;
+}
+h3{
+	margin: 10px;
+}
+textarea{
+	margin: 5px;
+	border: 1px solid black;	
+}
+table{
+	border:1px solid black;
+	margin-bottom: 5px;
+}
+tr{
+	border:1px solid black;	
+}
+td{
+	padding:10px 5px;
+	border:1px solid black;
+}
+#formDiv{
+	display: inline-block;
+	border:1px solid black;	
+	margin-bottom: 5px;
+}
+</style>
+<body>
+	<% include ./partials/navbar %>
+	<center>
+		<form method="POST" action="/treatment">
+			<input id="id" name="id" type="text" value="" placeholder="Enter Patient ID">
+			<button type="Submit" onclick="getPatient()">Treat</button>
+		</form>
+		<% if(typeof patient!=='undefined'){ %>
+			<table>
+			<th colspan="2">Patient Details</th>
+			<tr><td>ID</td><td><%= patient[0].Patient_id %></td></tr>
+			<tr><td>Name</td><td><%= patient[0].name %></td></tr>
+			<tr><td>Contact</td><td><%= patient[0].contact %></td></tr>
+			<tr><td>Address</td><td><%= patient[0].address %></td></tr>
+			</table>
+			<div id="formDiv">
+				<h3>Treatment</h3>
+				<form method="POST" action="/treat">
+					<input type="text" id="Patient_id" name="Patient_id" value="<%= patient[0].Patient_id %>"><br>
+					<input type="text" id="Doc_id" name="Doc_id" value="" placeholder="Doctor's ID"><br>
+					<textarea type="text" id="MedicinePrescribed" name="MedicinePrescribed" placeholder="Feed Medicines Here"></textarea><br>
+					<button type="submit">Submit</button>
+				</form>
+			</div>
+			<u><h3>Previous Treatment History</h3></u>
+			<% patient[0].previousTreatment.forEach((item)=>{ %>
+				<table>
+				<tr><td>Doctor's ID</td><td><%= item.Doc_id %></td></tr>
+				<tr><td>Medicine Prescribed</td><td><%= item.MedicinePrescribed %></td></tr>
+				<tr><td>Date of Treatment(yyyy-mm-dd)</td><td><%= item.DateOfTreatment.toISOString().slice(0,10) %></td></tr>
+				</table>
+			<% }); %>
+		<% } %>
+	</center>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+</script>
+</html>

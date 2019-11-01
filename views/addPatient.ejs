@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EIT</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<style type="text/css">
+center{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 100%;
+}
+.row{
+	width: 100%;
+}
+button{
+	margin: 10px;
+}
+input{
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid black;
+	width: 50%;
+}
+h3{
+	margin: 10px;
+}
+</style>
+<body>
+	<% include ./partials/navbar %>
+	<center>
+		<h3>Add Patient</h3>
+		<form method="POST" action="/addPatient">
+			<input id="Patient_id" name="Patient_id" type="text" value="" placeholder="ID NO." required><br>
+			<input id="name" name="name" type="text" value="" placeholder="Name" required><br>
+			<input id="contact" name="contact" type="text" value="" placeholder="Contact No." required><br>
+			<input id="address" name="address" type="text" value="" placeholder="Address" required><br>
+			<button id="myBtn" type="Submit">Submit</button>
+		</form>
+	</center>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+</script>
+</html>
