@@ -47,14 +47,15 @@ td{
 	<% include ./partials/navbar %>
 	<center>
 		<form method="POST" action="/treatment">
-			<input id="id" name="id" type="text" value="" placeholder="Enter Patient ID">
-			<button type="Submit" onclick="getPatient()">Treat</button>
+			<input id="id" name="id" type="text" value="" placeholder="Enter Patient ID" required>
+			<button type="Submit">Treat</button>
 		</form>
 		<% if(typeof patient!=='undefined'){ %>
 			<table>
 			<th colspan="2">Patient Details</th>
 			<tr><td>ID</td><td><%= patient[0].Patient_id %></td></tr>
 			<tr><td>Name</td><td><%= patient[0].name %></td></tr>
+			<tr><td>Date Of Birth</td><td><%= patient[0].dob %></td></tr>
 			<tr><td>Contact</td><td><%= patient[0].contact %></td></tr>
 			<tr><td>Address</td><td><%= patient[0].address %></td></tr>
 			</table>
@@ -62,7 +63,7 @@ td{
 				<h3>Treatment</h3>
 				<form method="POST" action="/treat">
 					<input type="text" id="Patient_id" name="Patient_id" value="<%= patient[0].Patient_id %>"><br>
-					<input type="text" id="Doc_id" name="Doc_id" value="" placeholder="Doctor's ID"><br>
+					<input type="text" id="Doc_id" name="Doc_id" value="<%= Doc_id %>" placeholder="Doctor's ID"><br>
 					<textarea type="text" id="MedicinePrescribed" name="MedicinePrescribed" placeholder="Feed Medicines Here"></textarea><br>
 					<button type="submit">Submit</button>
 				</form>
@@ -82,5 +83,6 @@ td{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
+document.getElementsByClassName('nav-item')[0].classList.add('active');
 </script>
 </html>

@@ -6,6 +6,7 @@ exports.savePatient = (info,cb)=>
 	var newPatientDetails=new patientDetails({
 		Patient_id: info.Patient_id,
 		name: info.name,
+		dob: info.dob,
 		contact: info.contact,
 		address: info.address,
 		previousTreatment:[]

@@ -16,7 +16,10 @@ var user=require('../.././Controllers/user');
 var auth=require('../.././Middlewares/auth');
 
 router.get("/",(req,res)=>{
-	res.render('select');
+	if(req.session.isLogin)
+		res.redirect("/home");
+	else
+		res.render('select');
 });
 
 router.get("/home",(req,res)=>{
@@ -36,15 +39,26 @@ router.get("/login",(req,res)=>{
 });
 
 router.get("/addDoctor",auth,(req,res)=>{
-	res.render('admin/addDoctor');
+	if(req.session.Doc_id=="ADMIN")
+		res.render('admin/addDoctor');
+	else
+		res.redirect('/treatment');
 });
 
 router.get("/addPatient",auth,(req,res)=>{
-	res.render('admin/addPatient');
+	if(req.session.Doc_id=="ADMIN")
+		res.render('admin/addPatient');
+	else
+		res.render('doctor/addPatient');
 });
 
 router.get("/treatment",auth,(req,res)=>{
 	res.render('doctor/treatment');
+});
+
+router.get("/logout",(req,res)=>{
+	req.session.destroy();
+	res.redirect("/");
 });
 
 router.post("/login",(req,res)=>{
@@ -84,7 +98,7 @@ router.post("/addPatient",(req,res)=>{
 	});
 });
 
-router.post("/treat",(req,res)=>{
+router.post("/treat",auth,(req,res)=>{
 	treatment.saveTreatment(req.body,(err,data)=>{
 		if(err)
 			res.send(err);
@@ -96,11 +110,12 @@ router.post("/treat",(req,res)=>{
 	});
 });
 
-router.post("/treatment",(req,res)=>{
+router.post("/treatment",auth,(req,res)=>{
 	patient.getTreatment(req.body.id,(err,data)=>{
 		if(err)
 			res.send(err);
-		res.render('doctor/treatment',{patient:data});
+		console.log(req.session.Doc_id);
+		res.render('doctor/treatment',{patient:data,Doc_id:req.session.Doc_id});
 	});
 });
 
