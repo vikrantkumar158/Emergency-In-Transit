@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EIT</title>
+		<meta charset="utf-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+	<style type="text/css">
+		center{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 100%;
+		}
+		button{
+			margin: 10px;
+		}
+		.button {
+			min-width: 185px;
+			width: 50%;
+			background-color: #f4511e;
+			border: none;
+			color: white;
+			padding: 16px 32px;
+			text-align: center;
+			font-size: 16px;
+			margin: 4px 2px;
+			opacity: 0.6;
+			transition: 0.3s;
+			display: inline-block;
+			text-decoration: none;
+			cursor: pointer;
+		}
+		.button:hover {opacity: 1}
+		a{
+			color: ;
+			text-decoration: none;
+		}
+	</style>
+	<body>
+		<% include ./partials/navbar %>
+		<center>
+			<a href="/login"><button class="button" type="button">Admin</button></a><br>
+			<a href="/login"><button class="button" type="button">Doctor</button></a><br>
+			<a href="/home"><button class="button" type="button">Patient</button></a><br>
+		</center>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</html>

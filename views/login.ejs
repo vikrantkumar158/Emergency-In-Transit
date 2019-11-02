@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+<title>EIT</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body{
+	background-color: rgb(125,250,125);
+	margin: 0px;
+	padding: 0px;
+}
+nav{
+	z-index: 10;
+}
+center{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.info{
+	height: 50px;
+	width: 70%;
+	outline: 0;
+	border: 0;
+	background-color: #F2F2F2;
+	color: black;
+	padding-left: 20px;
+}
+#input1{
+	border: 0;
+	height: 50px;
+	width: 70%;
+	background-color: rgb(125,250,125);
+	color: white;
+	font-size: 15px;
+}
+a{
+	color: #4CAF50;
+	text-decoration: none;
+}
+.field-icon {
+	margin-left: -29px;
+	z-index: 2;
+}
+</style>
+</head>
+<body>
+<% include ./partials/navbar %>
+<% if(typeof res!='undefined'){ %>
+<div class="alert alert-danger alert-dismissible" style="border-radius: 0;text-align: center;z-index: 11;">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Wrong password entered</strong>
+</div>
+<% } %>
+<form method="POST" action="/login" id="loginform" name="loginform"></form>
+<center>
+<table bgcolor="white" class="col-md-6">
+<tr height='70px'></tr>
+<tr align='center'>
+<td>
+<input class='info' type='text' placeholder='Username' name="Doc_id" form="loginform">
+</td>
+</tr>
+<tr height='20px'></tr>
+<tr align='center'>
+<td>
+<input class='info' type='password' placeholder='Password' id="pass" name="password" form="loginform">
+<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+</td>
+</tr>
+<tr height='20px'></tr>
+<tr align='center'>
+<td>
+<input id='input1' type='submit' value='LOGIN' form="loginform">
+</td>
+</tr>
+<tr height='30px'>
+<td align='center'><font color="#B3B3B3" size='3px'>Forgot Password? </font><a href="#">Reset Password</a></td>
+</tr>
+<tr height='50px'></tr>
+</table>
+</center>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(".toggle-password").click(function() 
+	{
+  		$(this).toggleClass("fa-eye fa-eye-slash");
+  		var input = $('#pass');
+  		if (input.attr("type") == "password") {
+    		input.attr("type", "text");
+  		} else {
+    		input.attr("type", "password");
+  		}
+	});
+</script>
+</html>

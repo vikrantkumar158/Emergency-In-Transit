@@ -33,12 +33,14 @@ h3{
 <body>
 	<% include ./partials/navbar %>
 	<center>
-		<h3>Add Patient</h3>
-		<form method="POST" action="/addPatient">
-			<input id="Patient_id" name="Patient_id" type="text" value="" placeholder="ID NO." required><br>
+		<h3>Add Doctor</h3>
+		<form method="POST" action="/addDoctor">
+			<input id="Doc_id" name="Doc_id" type="text" value="" placeholder="ID NO." required><br>
 			<input id="name" name="name" type="text" value="" placeholder="Name" required><br>
 			<input id="contact" name="contact" type="text" value="" placeholder="Contact No." required><br>
+			<input id="email" name="email" type="email" value="" placeholder="Email ID" required><br>
 			<input id="address" name="address" type="text" value="" placeholder="Address" required><br>
+			<input id="speciality" name="speciality" type="text" value="" placeholder="Speciality" required><br>
 			<button id="myBtn" type="Submit">Submit</button>
 		</form>
 	</center>
@@ -47,5 +49,6 @@ h3{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
+document.getElementsByClassName('nav-item')[0].classList.add('active');
 </script>
 </html>

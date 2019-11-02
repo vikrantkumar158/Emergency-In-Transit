@@ -7,6 +7,7 @@ exports.saveDoctor = (info,cb)=>
 		Doc_id: info.Doc_id,
 		name: info.name,
 		contact: info.contact,
+		email: info.email,
 		address: info.address,
 		speciality: info.speciality
 	});
