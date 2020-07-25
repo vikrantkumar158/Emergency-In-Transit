@@ -47,10 +47,14 @@ myBtn.disabled=true;
 
 function getLocation() {
   	if (navigator.geolocation) {
-  		navigator.geolocation.getCurrentPosition(showPosition);
+  		navigator.geolocation.getCurrentPosition(showPosition,errorHandler,{enableHighAccuracy:true,timeout:20000,maximumAge: 0 });
   	} else { 
     	demo.innerHTML = "Geolocation is not supported by this browser.";
   	}
+}
+
+function errorHandler() {
+	
 }
 
 function showPosition(position) {
